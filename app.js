@@ -3,9 +3,6 @@ const name = document.querySelector("#name");
 const intro = document.querySelector("#intro");
 const mainContent = document.querySelector("#main-content");
 
-intro.style.height = `calc(100vh - ${headImg.clientHeight}px - ${name.clientHeight}px)`;
-mainContent.style.height = `calc(100vh - ${name.clientHeight}px)`;
-
 // Checks for scroll UP or DOWN
 let lastScrollTop = 0;
 
@@ -19,3 +16,9 @@ let lastScrollTop = 0;
 //     }
 //     lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
 // }, false);
+
+//Make sure the images are loaded before execution
+window.addEventListener("load", () => {
+    intro.style.height = `calc(100vh - ${headImg.clientHeight}px - ${name.clientHeight}px)`;
+    mainContent.style.height = `calc(100vh - ${name.clientHeight}px)`;
+})
