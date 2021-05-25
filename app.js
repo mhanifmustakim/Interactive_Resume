@@ -18,4 +18,4 @@ let lastScrollTop = 0;
 // }, false);
 
 //Make sure the images are loaded before execution
-mainContent.style.height = `calc(100vh - ${name.clientHeight + 0.5}px)`;
+mainContent.style.height = `calc(100vh - ${name.clientHeight}px)`;
