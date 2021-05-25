@@ -19,6 +19,5 @@ let lastScrollTop = 0;
 
 //Make sure the images are loaded before execution
 window.addEventListener("load", () => {
-    intro.style.height = `calc(100vh - ${headImg.clientHeight}px - ${name.clientHeight}px)`;
     mainContent.style.height = `calc(100vh - ${name.clientHeight}px)`;
 })
