@@ -18,9 +18,6 @@ body{
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
     background-color: var(--third-color);
-    overflow: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-snap-stop: always;
 }
 
 #main-container{
@@ -44,7 +41,7 @@ body{
     color: var(--text-primary);
     font-family: 'Pattaya', sans-serif;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     padding: 0.5rem 2rem;
     position: sticky;
     top: 0;
@@ -65,7 +62,7 @@ body{
 .section{
     font-family: sans-serif;
     color: var(--text-primary);
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     text-align: center;
     max-width: 75vw;
 }
