@@ -19,6 +19,7 @@ body{
     font-size: 15px;
     font-family: 'Roboto', sans-serif;
     background-color: var(--third-color);
+    scroll-behavior: smooth;
 }
 
 #main-container{
@@ -26,11 +27,6 @@ body{
     width: 100vw;
     display: flex;
     flex-flow: row wrap;
-    scroll-behavior: smooth;
-    overflow: scroll;
-    scroll-snap-type: mandatory;
-    scroll-snap-points-y: repeat(100vh);
-    scroll-snap-type: y mandatory;
 }
 #head{
     height: 100vh;
