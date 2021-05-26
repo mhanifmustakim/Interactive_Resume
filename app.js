@@ -1,21 +1,29 @@
-const headImg = document.querySelector("#head-img");
-const name = document.querySelector("#name");
-const intro = document.querySelector("#intro");
 const mainContent = document.querySelector("#main-content");
+const headers = document.querySelectorAll(".section > header");
+const sections = document.querySelectorAll(".section");
 
-// Checks for scroll UP or DOWN
-let lastScrollTop = 0;
-
-// element should be replaced with the actual target element on which you have applied scroll, use window in case of no target element.
-// window.addEventListener("scroll", function () { // or window.addEventListener("scroll"....
-//     var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-//     if (st > lastScrollTop) {
-//         console.log("Scrolled Down")
-//     } else {
-//         console.log("Scrolled Up")
-//     }
-//     lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-// }, false);
-
-//Make sure the images are loaded before execution
-mainContent.style.height = `calc(100vh - ${name.clientHeight}px)`;
+headers.forEach(header => header.addEventListener("click", e => {
+    if (e.target.innerText == "...") {
+        sections.forEach(section => {
+            const p = section.querySelector("p");
+            section.classList.remove("display-none");
+            if (p) {
+                p.classList.add("display-none");
+            }
+            section.classList.remove("focused");
+        })
+        mainContent.classList.toggle("focused");
+        e.target.parentElement.classList.add("display-none");
+        return
+    }
+    headers.forEach(header => {
+        if (header.innerText != e.target.innerText) {
+            header.parentElement.classList.toggle("display-none")
+        }
+        else {
+            header.parentElement.classList.toggle("focused");
+        }
+    })
+    mainContent.classList.toggle("focused");
+    e.target.nextElementSibling.classList.toggle("display-none");
+}))
