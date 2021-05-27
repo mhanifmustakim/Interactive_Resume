@@ -5,10 +5,10 @@ const sections = document.querySelectorAll(".section");
 headers.forEach(header => header.addEventListener("click", e => {
     if (e.target.innerText == "...") {
         sections.forEach(section => {
-            const p = section.querySelector("p");
+            const content = section.querySelector(".content");
             section.classList.remove("display-none");
-            if (p) {
-                p.classList.add("display-none");
+            if (content) {
+                content.classList.add("display-none");
             }
             section.classList.remove("focused");
         })
@@ -25,5 +25,5 @@ headers.forEach(header => header.addEventListener("click", e => {
         }
     })
     mainContent.classList.toggle("focused");
-    e.target.nextElementSibling.classList.toggle("display-none");
+    e.target.nextElementSibling.classList.toggle("display-none")
 }))
