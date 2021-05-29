@@ -5,16 +5,15 @@
     --section-color: #5ba7d1;
     --text-primary: #fff;
     --text-secondary: #000;
+    --background-desktop: url("https://images.unsplash.com/photo-1549154425-7b519f2b92d4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80");
     --name-height: 64px;
+    font-size: 15px;
 }
 
 *, *::after, *::before{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-html{
-    font-size: 15px;
 }
 body{
     min-height: 100vh;
@@ -24,45 +23,61 @@ body{
 a{
     color: inherit;
 }
-#main-container{
+#master-grid{
     min-height: 100vh;
     width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "main-img"
+        "name"
+        "intro"
+        "main";
+}
+#desktop-only-img{
+    grid-area: desktop-img;
+}
+#main-container{
+    grid-area: main;
+    width: 100%;
+    height: auto;
+    background-color: var(--secondary-color);
     display: flex;
     flex-flow: row wrap;
 }
-#head{
-    min-height: 100vh;
-}
 #head-img{
-    max-width: 100vw;
-    object-fit: contain;
-    display: block;
+    grid-area: main-img;
 }
-
+img{
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
 #name{
+    grid-area: name;
+    width: 100%;
+    height: var(--name-height);
     background-color: var(--primary-color);
     color: var(--text-primary);
     font-family: 'Pattaya', sans-serif;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.75rem;
     padding: 0.75rem 1.5rem;
     position: sticky;
     top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-content: center;
+    place-items: end;
 }
-#name span i{
+#name i{
     padding-left: 0.5rem;
-    padding-right: 0.5rem;
-}
-#name span i:last-of-type{
-    padding-right: 0;
 }
 #intro{
+    grid-area: intro;
     display: flex;
     align-items: center;
-    padding: 1.5rem;
+    padding: 5%;
     color: var(--text-secondary);
     background-color: var(--third-color);
     font-size: 1.1rem;
@@ -92,6 +107,7 @@ a{
         "footer";
 }
 .section{
+    background-color: var(--section-color);
     font-family: sans-serif;
     color: var(--text-primary);
     font-size: 1.6rem;
@@ -108,6 +124,12 @@ a{
     padding: 1rem;
     width: 75%;
     margin: 0 auto;
+}
+.section > header:hover{
+    cursor: pointer;
+}
+header:hover{
+    cursor: default;
 }
 .section.focused{
     grid-area: section;
@@ -154,6 +176,10 @@ a{
 .education{
     grid-area: education
 }
+.education img{
+    max-height: 25vh;
+    margin: auto;
+}
 .skills{
     grid-area: skills
 }
@@ -182,6 +208,12 @@ a{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+.col-2-auto{
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+    max-width: 75%;
+}
 .col-2.ref{
     grid-template-columns: 1fr 2fr;
 }
@@ -192,17 +224,20 @@ a{
 .col-item{
     padding: 0 1.5ch;
 }
+
 .align-start{
     text-align: start;
 }
 .align-end{
     text-align: end;
 }
-.item .contained-75{
+.item .contained-75,
+.item.contained-75{
     width: 75%;
     margin: 0 auto;
 }
-.item .contained-90{
+.item .contained-90,
+.item.contained-90{
     width: 90%;
     margin: 0 auto;
 }
@@ -220,6 +255,135 @@ a{
     margin: 0 auto;
     grid-template-columns: 2rem auto;
 }
+.large-only{
+    display: none;
+}
+.col-item.margin-center{
+    margin: 1rem auto;
+}
 /* .item .ref-img{
     Add some border
 } */
+@media only screen and (min-width: 540px){
+    :root{
+        --name-height: 72px;
+        font-size: 19px;
+    }
+    #master-grid{
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+        "desktop-img desktop-img"
+        "name name"
+        "main-img intro"
+        "main main";
+    }
+    #desktop-only-img{
+        grid-column: span 2;
+    }
+    #main-container{
+        width: 100%;
+        height: auto;
+    }
+    #main-content{
+        width: 90%;
+        margin: 0 auto;
+    }
+    #name{
+        margin-top: 0; 
+        grid-column: span 2;
+    }
+    #head-img{
+        display: block;
+        margin: 0;
+        padding: 1rem;
+        object-fit: contain;
+        background-color: var(--third-color);
+    }
+    #main{
+        grid-column: span 2;;
+    }
+    .item .contained-90{
+        width: 65%;
+        margin: 0 auto;
+    }
+    .item .contained-75{
+        width: 65%;
+        margin: 0 auto;
+    }
+    .item img{
+        max-width: 80%;
+        display: block;
+        margin: 1rem auto;
+    }
+    .large-only{
+        display: block;
+    }
+}
+@media (min-width: 769px){
+    :root{
+        --name-height: 81px;
+        font-size: 21px;
+    }
+    body{
+        min-height: unset;
+        background-image: var(--background-desktop);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .large-only{
+        display: none;
+    }
+    #master-grid{
+        min-height: unset;
+        height: calc(100vh - var(--name-height));
+        max-width: 1000px;
+        margin: 0 auto;
+        margin-top: var(--name-height);
+        background-color: var(--third-color);
+        grid-template-rows: auto 1fr;
+        grid-gap: 0;
+        grid-template-areas: 
+        "main-img main"
+        "intro main";
+    }
+    #name{
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    #name i{
+        padding-left: 1rem;
+    }
+    #main-content{
+        width: 100%;
+        height: calc(100vh - var(--name-height));
+    }
+    #intro{
+        font-size: 0.9rem;
+        padding: 2rem 10%;
+    }
+    #main-content.focused{
+        height: 100%;
+    }
+    .item .contained-90{
+        width: 75%;
+        margin: 0 auto;
+    }
+    .item .contained-75{
+        width: 75%;
+        margin: 0 auto;
+    }
+    .item.contact-grid{
+        width: 75%;
+        margin: 0 auto;
+        grid-template-columns: 2rem auto;
+    }
+    .item img{
+        max-width: 100%;
+        margin: auto;
+    }
+    .margin-y-1{
+        margin: auto 0;
+    }
+}
