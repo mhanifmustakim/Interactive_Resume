@@ -326,10 +326,11 @@ header:hover{
     }
     body{
         min-height: unset;
-        background-image: var(--background-desktop);
+        background-color: var(--third-color);
+        /* background-image: var(--background-desktop);
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: cover; */
     }
     .large-only{
         display: none;
@@ -346,6 +347,9 @@ header:hover{
         grid-template-areas: 
         "main-img main"
         "intro main";
+    }
+    #main-container{
+        border-radius: 1em;
     }
     #name{
         position: fixed;
